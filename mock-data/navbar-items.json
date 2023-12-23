@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Product",
+    "children": [
+      {
+        "link": { "name": "Whats New", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Best Sellers", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Design", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Collaboration", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Prototyping", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Commenting", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Handoff", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Integrations", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Security", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Pricing", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Education", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Libraries", "url": "/" },
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "Learn",
+    "children": [
+      {
+        "link": { "name": "About Us", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Contact Us", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Careers", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Blog", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Help Center", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Terms of Service", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Privacy Policy", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "GDPR", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "CCPA", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Accessibility", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Press Kit", "url": "/" },
+        "children": []
+      },
+      {
+        "link": { "name": "Affiliates", "url": "/" },
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "Extra Surprises 🎁",
+    "children": [
+      {
+        "link": { "name": "Free Stuff", "url": "/" },
+        "children": []
+      }
+    ]
+  }
+]
