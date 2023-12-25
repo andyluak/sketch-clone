@@ -1,4 +1,5 @@
-import React, { useCallback } from "react"
+import React, { forwardRef, useCallback, useId } from "react"
+import { motion, MotionProps, PanInfo } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -6,81 +7,53 @@ type Props = {
   children: React.ReactNode
   title: string
   className?: string
-} & React.HTMLAttributes<HTMLDivElement>
+} & MotionProps & {
+    onDrag?: (
+      event: MouseEvent | TouchEvent | PointerEvent,
+      info: PanInfo
+    ) => void
+  }
 
-function FigmaComponent({ children, title, className, ...props }: Props) {
-  const [isDragging, setIsDragging] = React.useState(false)
-  const [position, setPosition] = React.useState({ x: 0, y: 0 })
-  const dragRef = React.useRef<HTMLDivElement>(null)
+const FigmaContainer = forwardRef<HTMLDivElement, Props>(
+  ({ children, title, className, ...props }, ref) => {
+    const dragRef = React.useRef<HTMLDivElement>(null)
+    const id = useId()
 
-  const handleMouseDown = useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
-      if (event.button !== 0) return
-
-      setIsDragging(true)
-      dragRef.current!.style.transition = "none"
-    },
-    []
-  )
-
-  const handleMouseMove = useCallback(
-    (event: MouseEvent) => {
-      if (isDragging && dragRef.current) {
-        const newX = position.x + event.movementX
-        const newY = position.y + event.movementY
-        setPosition({ x: newX, y: newY })
-        dragRef.current.style.transform = `translate(${newX}px, ${newY}px)`
-        dragRef.current.style.userSelect = "none"
-      }
-    },
-    [isDragging, position]
-  )
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false)
-    dragRef.current!.style.transition = "transform 0.2s"
-  }, [])
-
-  React.useEffect(() => {
-    if (isDragging) {
-      window.addEventListener("mousemove", handleMouseMove)
-      window.addEventListener("mouseup", handleMouseUp)
-    } else {
-      window.removeEventListener("mousemove", handleMouseMove)
-      window.removeEventListener("mouseup", handleMouseUp)
-    }
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      window.removeEventListener("mouseup", handleMouseUp)
-    }
-  }, [isDragging, handleMouseMove, handleMouseUp])
-
-  return (
-    <div
-      className={cn(
-        "flex flex-col gap-2 pointer-events-none w-fit md:pointer-events-auto",
-        className
-      )}
-      {...props}
-      ref={dragRef}
-      onMouseDown={handleMouseDown}
-    >
-      <p className="text-xs text-gray-600">{title}</p>
-      {children}
-    </div>
-  )
-}
-
-const Component = ({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("bg-background", className)} {...props}>
-    {children}
-  </div>
+    return (
+      <motion.div
+        drag
+        onDrag={props.onDrag}
+        className={cn(
+          "flex flex-col gap-2 pointer-events-none w-fit md:pointer-events-auto",
+          className
+        )}
+        {...props}
+        id={id}
+        ref={ref}
+      >
+        <p className="text-xs text-gray-600">{title}</p>
+        {children}
+      </motion.div>
+    )
+  }
 )
 
-FigmaComponent.Component = Component
+FigmaContainer.displayName = "FigmaComponent"
 
-export default FigmaComponent
+type FigmaComponentProps = {
+  children: React.ReactNode
+  className?: string
+} & React.HTMLAttributes<HTMLDivElement> &
+  MotionProps
+
+const FigmaComponent = React.forwardRef<HTMLDivElement, FigmaComponentProps>(
+  ({ children, className, ...props }, ref) => (
+    <motion.div className={cn("bg-background", className)} {...props} ref={ref}>
+      {children}
+    </motion.div>
+  )
+)
+
+FigmaComponent.displayName = "FigmaComponent"
+
+export { FigmaComponent, FigmaContainer }
