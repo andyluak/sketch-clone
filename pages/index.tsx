@@ -1,14 +1,6 @@
-import Image from "next/image"
 import { ConnectedComponentsProvider } from "@/context/connected-components-context"
-import {
-  AirVent,
-  AlarmSmoke,
-  AudioLines,
-  Pencil,
-  TextCursor,
-} from "lucide-react"
+import { AirVent, AlarmSmoke, AudioLines, Pencil } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import ActivePointer from "@/components/active-pointer"
 import ConnectedComponents from "@/components/connected-components"
 import { FigmaComponent, FigmaContainer } from "@/components/figma-component"
