@@ -3,9 +3,10 @@ import {
   Point,
   useConnectedComponents,
 } from "@/context/connected-components-context"
-import { AirVent } from "lucide-react"
+import { AirVent, Fan } from "lucide-react"
 
 import BendyLine from "./bendy-line"
+import FancyText from "./fancy-text"
 import { FigmaComponent, FigmaContainer } from "./figma-component"
 import { Button } from "./ui/button"
 
@@ -137,8 +138,9 @@ function ConnectedComponents({}: Props) {
           ref={mainComponentRef}
         >
           <div className="flex flex-col gap-6">
-            <h1 className="text-xl font-bold line-clamp-2 md:text-4xl/[48px]">
-              Sketch is where great <br /> design happens.
+            <h1 className="text-xl font-bold  md:text-4xl/[48px]">
+              Sketch is where great <FancyText text="design" />
+              <br /> happens.{" "}
             </h1>
             <p>
               A Mac app for designers to create, team up,{" "}
@@ -190,38 +192,6 @@ function ConnectedComponents({}: Props) {
         title="The Icon"
       >
         <FigmaComponent className="self-start" ref={childComponentRef}>
-          <div className="p-4 bg-white rounded-lg">
-            <AirVent size={64} />
-          </div>
-        </FigmaComponent>
-      </FigmaContainer>
-      <FigmaContainer
-        dragTransition={{
-          power: 0.01,
-          timeConstant: 10,
-        }}
-        onDrag={(e, info) => {
-          setChildComponents([{ point: info.point }])
-        }}
-        onDragTransitionEnd={() => {
-          const bounding = mainComponentRef.current?.getBoundingClientRect()
-          if (!bounding) return
-          setChildComponents([
-            {
-              point: {
-                x: bounding.left,
-                y: bounding.top + bounding.height / 2,
-              },
-            },
-          ])
-        }}
-        onDragEnd={(e, info) => {
-          setChildComponents([{ point: info.point }])
-        }}
-        className="absolute hidden md:block top-[600px] right-20"
-        title="The Second Icon"
-      >
-        <FigmaComponent className="self-start" ref={secondaryChildComponentRef}>
           <div className="p-4 bg-white rounded-lg">
             <AirVent size={64} />
           </div>

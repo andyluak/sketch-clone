@@ -7,26 +7,31 @@ import { FigmaComponent, FigmaContainer } from "@/components/figma-component"
 
 export default function Home() {
   return (
-    <section className="relative space-y-4 md:flex md:flex-col">
-      <ConnectedComponentsProvider
-        initialMainComponent={{ point: { x: 0, y: 0 } }}
-        initialChildComponents={[{ point: { x: 0, y: 0 } }]}
-      >
-        <ConnectedComponents />
-      </ConnectedComponentsProvider>
-      <ActivePointer
-        className="top-6"
-        Component={
-          <div className="flex items-center  gap-2 z-[9999] will-change-transform  rounded-full px-2 text-pink-900">
-            <Pencil size={20} />
-            <p className="px-2 bg-pink-200 rounded-full text-gray-950">
-              Designer
-            </p>
-          </div>
-        }
-      />
-      <ComponentsGroup />
-    </section>
+    <>
+      <section className="relative space-y-4 min-h-[60%] md:flex md:flex-col">
+        <ConnectedComponentsProvider
+          initialMainComponent={{ point: { x: 0, y: 0 } }}
+          initialChildComponents={[{ point: { x: 0, y: 0 } }]}
+        >
+          <ConnectedComponents />
+        </ConnectedComponentsProvider>
+        <ActivePointer
+          className="top-6"
+          Component={
+            <div className="flex items-center  gap-2 z-[9999] will-change-transform  rounded-full px-2 text-pink-900">
+              <Pencil size={20} />
+              <p className="px-2 bg-pink-200 rounded-full text-gray-950">
+                Designer
+              </p>
+            </div>
+          }
+        />
+        <ComponentsGroup />
+      </section>
+      <section className="relative mt-12 space-y-4 md:flex md:flex-col">
+        Salut
+      </section>
+    </>
   )
 }
 

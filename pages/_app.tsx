@@ -4,11 +4,20 @@ import Layout from "@/components/layout"
 
 import "@/styles/globals.css"
 
-import { Inter as FontSans } from "next/font/google"
+import {
+  Permanent_Marker as FontFancy,
+  Inter as FontSans,
+} from "next/font/google"
 
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+})
+
+export const fontFancy = FontFancy({
+  subsets: ["latin"],
+  variable: "--font-fancy",
+  weight: "400",
 })
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -17,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <style jsx global>{`
         :root {
           --font-sans: ${fontSans.style.fontFamily};
+          --font-fancy: ${fontFancy.style.fontFamily};
         }
       `}</style>
       <Layout>

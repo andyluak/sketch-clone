@@ -17,7 +17,7 @@ function BendyLine({ mainComponentPoint, childComponentPoint }: Props) {
   }, [])
 
   const lineContent = (
-    <svg className="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <svg className="absolute top-0 left-0 hidden w-full h-full pointer-events-none md:block">
       <marker
         id="arrow"
         viewBox="0 0 10 10"
