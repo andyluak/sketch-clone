@@ -4,6 +4,7 @@ import { AirVent, AlarmSmoke, AudioLines, Pencil } from "lucide-react"
 import ActivePointer from "@/components/active-pointer"
 import ConnectedComponents from "@/components/connected-components"
 import { FigmaComponent, FigmaContainer } from "@/components/figma-component"
+import Slider from "@/components/slider"
 
 export default function Home() {
   return (
@@ -28,8 +29,8 @@ export default function Home() {
         />
         <ComponentsGroup />
       </section>
-      <section className="relative mt-12 space-y-4 md:flex md:flex-col">
-        Salut
+      <section className="relative items-center w-full m-auto mt-12 space-y-4 md:flex md:flex-col">
+        <Slider />
       </section>
     </>
   )
